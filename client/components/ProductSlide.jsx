@@ -15,80 +15,83 @@ import {
 
 const ProductSlide = () => {
   return (
-    <section className="max-w-6xl mx-auto min-h-1/2 flex items-center py-12 px-6">
-      <div className="container w-full flex flex-col gap-6 mx-auto items-center overflow-hidden">
-        <h2 className="text-sm font-poppins font-medium">Featured Products</h2>
+    <section className="max-w-6xl mx-auto py-12 px-6">
+      <div className="w-full flex flex-col gap-8 items-center">
+        <h2 className="text-lg font-poppins font-semibold text-teal-700">
+          Featured Products
+        </h2>
         <Swiper
           modules={[Navigation, Pagination, Autoplay, EffectCards]}
           effect="cards"
-          autoplay={{ delay: 2000, disableOnInteraction: false }}
-          navigation
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           slidesPerView={1}
+          className="w-full max-w-md"
         >
           {products.map((product) => (
             <SwiperSlide key={product.id}>
-              <div className="bg-white/30 backdrop-blur-sm rounded-xl p-6 flex flex-col gap-3">
-                <figure className="rounded-xl overflow-hidden">
+              <div className="bg-white/90 shadow-md rounded-xl p-3 flex flex-col gap-4">
+                <figure className=" bg-black p-2 rounded-xl overflow-hidden">
                   <Image
                     src={product.image[0].pic1}
                     alt={product.name}
                     width={300}
                     height={300}
-                    className="object-cover w-full h-48"
+                    className="object-cover w-full h-52"
                   />
                 </figure>
-                <section className="px-3 flex flex-col ">
-                  <article className="grid grid-cols-2 text-sm font-poppins font-semibold mb-3">
-                    <h3 className="truncate whitespace-nowrap text-white">
-                      {product.name}
-                    </h3>
-                    <p className="ml-4 text-teal-700 text-end">
+                <section className="flex flex-col gap-3">
+                  <article className="flex items-center justify-between text-sm font-semibold font-poppins">
+                    <h3 className="truncate">{product.name}</h3>
+                    <p className="text-teal-700">
                       {CurrencyFormatter(product.price)}
                     </p>
                   </article>
-                  <div className="text-xs font-poppins font-normal mb-3">
-                    <h3 className="text-white font-medium mb-3">Specs :</h3>
-                    <div className="grid grid-cols-2 gap-3 text-gray-300">
-                      <div>
+                  <div className="text-xs text-neutral-600">
+                    <h3 className="font-medium mb-2">Specs :</h3>
+                    <div className="grid grid-cols-2 gap-2 text-neutral-500">
+                      <div className="flex items-center gap-1">
                         <MdOutlineSmartphone />
-                        <span className="truncate ">
-                          {product.specs.display}
-                        </span>
+                        <span>{product.specs.display}</span>
                       </div>
-                      <div>
+                      <div className="flex items-center gap-1">
                         <MdOutlineSdStorage />
-                        <span className="truncate">
-                          {product.specs.storage}
-                        </span>
+                        <span>{product.specs.storage}</span>
                       </div>
-                      <div>
+                      <div className="flex items-center gap-1">
                         <MdOutlineCamera />
-                        <span className="truncate ">
-                          {product.specs.camera}
-                        </span>
+                        <span>{product.specs.camera}</span>
                       </div>
-                      <div>
+                      <div className="flex items-center gap-1">
                         <MdOutlineBattery0Bar />
-                        <span className="truncate">
-                          {product.specs.battery}
-                        </span>
+                        <span>{product.specs.battery}</span>
                       </div>
                     </div>
                   </div>
-                  <h3 className="text-xs text-white/50 font-poppins font-medium mb-3">
+                  <h3
+                    className={`text-xs font-medium ${
+                      product.inStock ? "text-emerald-500" : "text-red-500"
+                    }`}
+                  >
                     {product.inStock ? "In Stock" : "Out of Stock"}
                   </h3>
 
-                  <div className="w-full flex items-center gap-6">
+                  <div className="flex items-center gap-4 mt-2">
                     <button
                       disabled={!product.inStock}
-                      className=" px-6 rounded-full shadow-2xl text-sm font-medium font-gal py-3 bg-teal-800 text-white"
+                      className={`px-6 rounded-full text-sm font-medium font-gal py-2  transition ${
+                        product.inStock
+                          ? "bg-teal-800 hover:bg-teal-900 text-white cursor-pointer"
+                          : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                      }`}
                     >
                       {" "}
                       Buy{" "}
                     </button>
-                    <button> View </button>
+                    <button className="bg-black rounded-full text-sm font-gal shadow-md px-6 py-2 text-white hover:shadow-lg transition ease-in-out duration-300 ">
+                      {" "}
+                      View{" "}
+                    </button>
                   </div>
                 </section>
               </div>
