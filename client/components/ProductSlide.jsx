@@ -1,4 +1,5 @@
 "use client";
+import { delay, motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/bundle";
@@ -14,12 +15,33 @@ import {
 } from "react-icons/md";
 
 const ProductSlide = () => {
+  const cardVariants = {
+    offScreen: {
+      y: 40,
+      opacity: 0,
+    },
+
+    onScreen: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeInOut", delay: 0.1 },
+    },
+  };
   return (
     <section className="max-w-6xl mx-auto py-12 px-6">
       <div className="w-full flex flex-col gap-8 items-center">
-        <h2 className="text-lg font-poppins font-semibold text-teal-700">
+        <motion.h2
+          initial={{ y: -20, opacity: 0 }}
+          whileInView={{
+            y: 0,
+            opacity: 1,
+            transition: { duration: 0.5, ease: "easeInOut" },
+          }}
+          viewport={{ once: true }}
+          className="text-lg font-poppins font-semibold text-teal-700"
+        >
           Featured Products
-        </h2>
+        </motion.h2>
         <Swiper
           modules={[Navigation, Pagination, Autoplay, EffectCards]}
           effect="cards"
@@ -30,7 +52,12 @@ const ProductSlide = () => {
         >
           {products.map((product) => (
             <SwiperSlide key={product.id}>
-              <div className="bg-white/90 shadow-md rounded-xl p-3 flex flex-col gap-4">
+              <motion.div
+                variants={cardVariants}
+                initial="offScreen"
+                whileInView="onScreen"
+                className="bg-white/90 shadow-md rounded-xl p-3 flex flex-col gap-4"
+              >
                 <figure className=" bg-black p-2 rounded-xl overflow-hidden">
                   <Image
                     src={product.image[0].pic1}
@@ -94,7 +121,7 @@ const ProductSlide = () => {
                     </button>
                   </div>
                 </section>
-              </div>
+              </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>

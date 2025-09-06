@@ -15,7 +15,7 @@ const Links = () => {
         </li>
         <li>
           <Link
-            href="/"
+            href="/products"
             className="hover:text-teal-800 hover:scale-95 transition duration-300 ease-in-out"
           >
             {" "}
@@ -24,7 +24,7 @@ const Links = () => {
         </li>
         <li>
           <Link
-            href="/"
+            href="/services"
             className="hover:text-teal-800 hover:scale-95 transition duration-300 ease-in-out"
           >
             {" "}
@@ -33,7 +33,7 @@ const Links = () => {
         </li>
         <li>
           <Link
-            href="/"
+            href="/about"
             className="hover:text-teal-800 hover:scale-95 transition duration-300 ease-in-out"
           >
             {" "}

@@ -1,16 +1,33 @@
+"use client";
 import Image from "next/image";
 import { services } from "@/data";
-
+import { motion } from "framer-motion";
 const Services = () => {
   return (
     <>
       <section className="container max-w-6xl mx-auto py-12 px-6 flex flex-col gap-8 items-center">
-        <h2 className="font-poppins font-semibold text-lg text-teal-700">
+        <motion.h2
+          initial={{ opacity: 0 }}
+          whileInView={{
+            opacity: 1,
+            transition: { duration: 0.5, ease: "easeInOut" },
+          }}
+          viewport={{ once: true }}
+          className="font-poppins font-semibold text-lg text-teal-700"
+        >
           {" "}
           Services{" "}
-        </h2>
+        </motion.h2>
         <div className="w-full grid md:grid-cols-2 items-center gap-6">
-          <figure className="w-full flex justify-center">
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{
+              x: 0,
+              opacity: 1,
+              transition: { duration: 0.6, ease: "easeIn", delay: 0.1 },
+            }}
+            className="w-full flex justify-center"
+          >
             <Image
               src={"/assets/service.png"}
               width={350}
@@ -18,8 +35,16 @@ const Services = () => {
               alt="Service Illustration"
               className="object-cover"
             />
-          </figure>
-          <div className="grid grid-cols-2 place-items-center gap-6">
+          </motion.div>
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            whileInView={{
+              x: 0,
+              opacity: 1,
+              transition: { duration: 0.6, ease: "easeIn", delay: 0.1 },
+            }}
+            className="grid grid-cols-2 place-items-center gap-6"
+          >
             {services.map((service, i) => (
               <article
                 key={i}
@@ -44,7 +69,7 @@ const Services = () => {
                 </p>
               </article>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </>
