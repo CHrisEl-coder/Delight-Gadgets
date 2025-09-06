@@ -1,6 +1,6 @@
 import {Gabarito, Galada, Poppins, } from "next/font/google"
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -32,6 +32,7 @@ export default function RootLayout({ children }) {
         className={`${gabarito.variable} ${poppins.variable} ${galada.variable} antialiased`}
       >
         {children}
+        
       </body>
     </html>
   );

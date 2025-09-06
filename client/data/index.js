@@ -138,3 +138,26 @@ export const products = [
     inStock: true,
   },
 ];
+
+export const services = [
+  {
+    title: "Swap and Upgrade",
+    desc: "Seamlessly swap and upgrade your gadgets with our user-friendly platform, ensuring you always stay ahead with the latest technologies.",
+    icon: "/icons/swap.svg",
+  },
+  {
+    title: "Repair and Maintenance",
+    desc: "Keep your gadgets in top condition with our expert repair and maintenance services, ensuring optimal performance and longevity.",
+    icon: "/icons/repair.svg",
+  },
+  {
+    title: "Smart Add-Ons",
+    desc: "Enhance your experience with our range of smart add-ons, designed to add functionality and convenience to your devices.",
+    icon: "/icons/add.svg",
+  },
+  {
+    title: "Tech Consultation",
+    desc: "Get personalized advice from our experts to help you navigate the ever-changing tech landscape with confidence.",
+    icon: "/icons/support.svg",
+  },
+];
