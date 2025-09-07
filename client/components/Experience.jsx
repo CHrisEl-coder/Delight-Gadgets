@@ -1,8 +1,18 @@
+"use client";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const Experience = () => {
   return (
-    <section className="max-w-6xl w-full mx-auto px-6 py-12 border-t border-gray-300">
+    <motion.section
+      initial={{ opacity: 0, zoom: 0.8 }}
+      whileInView={{
+        opacity: 1,
+        zoom: 1,
+        transition: { duration: 0.6, ease: "easeIn", delay: 0.2 },
+      }}
+      className="max-w-6xl w-full mx-auto px-6 py-12 border-t border-gray-300"
+    >
       <h1 className="text-center text-xl font-medium font-gab mb-6 ">
         {" "}
         Why Choose Us{" "}
@@ -68,7 +78,7 @@ const Experience = () => {
           </article>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
